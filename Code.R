@@ -430,7 +430,7 @@ library(rdacca.hp)
 mite.rda.hp <- rdacca.hp(SPECIALIST, Env[,c(2:8,10:11)], method = 'RDA', type = 'R2', scale = FALSE)
 mite.rda.hp
 
-set.seed(123)
+set.seed(1)
 envfit <- envfit(RDA, Env[,c(2:8,10:11)], permutations  = 999)
 r <- as.matrix(envfit$vectors$r)
 p <- as.matrix(envfit$vectors$pvals)
@@ -614,10 +614,10 @@ all<-data.frame(scale(dat,center = F))
 
 ####NL/NH/W
 model <- psem(
-  lm(ANFR~pH+TP+Biomass,data=all),
+  lm(ANFR~pH+AP+Biomass,data=all),
   lm(Biomass~NH+W,data=all),
   lm(pH~NH,data=all),
-  lm(TP~NL,data=all))
+  lm(AP~NL,data=all))
 summary(model)
 
 dat = read.xlsx('Env.xlsx',3,rowNames = TRUE)
